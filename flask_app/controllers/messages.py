@@ -13,7 +13,6 @@ from flask_app.models.user import Users
 def createMessage():
     data = {
         "content": request.form['message'],
-        # Pass in the id of the User in session to use as the foreign key to describe who made the Tweet
         "user_id": session['user_id']
     }
   
@@ -22,9 +21,18 @@ def createMessage():
         return redirect("/success")
     
     message_id = Messages.create_message(data)
-    Messages.create_message(data)
     
-    
+    return redirect("/success")
+
+
+@app.route("/message/delete/<message_id>")
+def delete_message(message_id):
+    datas = {
+        "id":  message_id,
+    }
+   
+    Messages.delete_message(datas)
+
     return redirect("/success")
    
 

@@ -94,11 +94,8 @@ def success():
         flash("You are not logged in, please log in", 'login')
         return redirect ("/login")
 
-
-    all_mssag_users = Messages.get_all_messages_with_creator()
+    all_mssag_users = Messages.get_all_messages_with_all_users()
     
-
-
     return render_template("success.html", all_the_messages = all_mssag_users)
 
 

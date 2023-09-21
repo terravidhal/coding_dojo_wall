@@ -45,14 +45,14 @@
     </div>
     <form action="/message/create" method="POST">
       <div class="form-group">
-        <label class="h5" for="message">what's on you mind ? Create a new post:</label>
+        <label class="h5 italic" for="message">what's on you mind ? Create a new post:</label>
         {% with messages = get_flashed_messages(category_filter=['message']) %}
           {% if messages %}
               {% for elt in messages %}
-                <div class="red">{{elt}}</div>
+                <div class="red italic">{{elt}}</div>
               {% endfor %}
           {% endif %}
-       {% endwith %}
+        {% endwith %}
         <textarea class="form-control" id="message" name="message" rows="3"></textarea>
       </div>
       <div class="save my-4">
@@ -63,14 +63,20 @@
     <div class="all h2">All community Posts</div>
     <div class="all-posts">
       {% for elt in all_the_messages %}
-        <h6>{{ elt.creator.first_name }} - {{elt.creator.created_at}}</h6> 
-        {#<a href="/profile/{{ elt.creator.id }}">@{{ elt.creator.handle }}</a> #}
+        <h6>{{ elt.user.first_name }} - {{elt.user.created_at}}</h6> 
         <div class="delete d-flex">
           <p>{{ elt.content }}</p>
-          <button  class="btn btn-danger">delete</button>
+          <a href="/message/delete/{{elt.id}}" class="btn btn-danger"><em>delete</em></a>
         </div>
-      {% endfor %}
+        <hr>
+      {% endfor %} 
     </div>
    {# a comment #}
 
   {%endblock%}
+
+
+
+
+
+  

@@ -16,7 +16,7 @@ class Users:
         self.created_at = data["created_at"].strftime("%B %drd %Y %H:%M:%S %p")
         self.updated_at = data["updated_at"].strftime("%B %drd %Y %H:%M:%S %p")
         # [] peut représenter un emplacement actuellement vide pour stocker tous les tweets créés par une seule instance d'utilisateur, car un utilisateur crée lui-même  BEAUCOUP de tweets
-        self.tweets = [] 
+        self.all_messages = [] 
 
     
 
@@ -69,3 +69,9 @@ class Users:
         if len(result) < 1:  
             return False
         return cls(result[0])
+    
+
+
+
+
+    
